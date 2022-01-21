@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import React from 'react'
 import s from '../styles/stylesComponentes.module.css';
-import ss from '../styles/stylesApp.module.css';
-import Card from './Card';
+
 
 function Paginado({countriesPerPage, allCountries, paginado}) {
 

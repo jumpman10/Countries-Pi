@@ -3,9 +3,7 @@ import axios from "axios";
 import { GET_COUNTRIES,
     GET_COUNTRIES_ERROR,
     GET_COUNTRIES_NAMES,
-    GET_COUNTRIE_NAME_ERROR,
-    CREATED_ACTIVITY,
-CREATED_ACTIVITY_ERROR,COUNTRIES_ACTIVITY,COUNTRIES_ACTIVITY_ERROR,GET_ACTIVITIES,GET_ACTIVITIES_ERROR
+ GET_ACTIVITIES,GET_ACTIVITIES_ERROR
 } from '../constants/countrysConstants'
 
     const url = "http://localhost:3001/";
@@ -48,51 +46,6 @@ console.log(error)
         }
     };
 
-
-    export const createdActivity = (countrie) => async (dispatch) => {
-        try{
-    
-            const json  = await axios.post(`${url}countries/tourism`,countrie)
-           
-    
-        dispatch({
-            type: CREATED_ACTIVITY,
-            payload: json.data,
-        })
-        
-        } catch(error) {
-            dispatch({
-                type: CREATED_ACTIVITY_ERROR,
-                payload:
-                error.response && error.response.data.message
-                ? error.response.data.message
-                : error.message,
-            })
-        }
-
-    };
-    export const addCountriesActivity = (idTourism,idCountry) => async (dispatch) => {
-        try{
-    
-            const json = await axios.post(`${url}tourism/${idTourism}}/countries/${idCountry}`)
-            
-    
-        dispatch({
-            type: COUNTRIES_ACTIVITY,
-            payload: json.data,
-        })
-        
-        } catch(error) {
-            dispatch({
-                type: COUNTRIES_ACTIVITY_ERROR,
-                payload:
-                error.response && error.response.data.message
-                ? error.response.data.message
-                : error.message,
-            })
-        }
-
-    }
 
 
 

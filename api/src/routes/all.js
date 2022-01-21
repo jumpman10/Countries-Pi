@@ -24,7 +24,8 @@ server.get('/', async (req, res, next) => {
     if(country.length < 1){
       
      allApi.forEach(element=>{
-      const obj = { name: element.name.common,
+      const obj = { id: element.cca3,
+                   name: element.name.common,
                    flag: element.flags[0],
                    region: element.region,
                    capital: element.capital && element.capital[0] ? element.capital[0] : '-',

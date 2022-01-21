@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css';
-import Nav from '../componentes/NavBar';
-import ss from '../styles/stylesApp.module.css';
+import Header from '../componentes/Header';
 import s from '../styles/stylesComponentes.module.css'
-import Nav2 from '../componentes/NavBar2';
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries,addCountriesActivity,getCountrieName } from '../actions/countriesActions';
+import { getCountries } from '../actions/countriesActions';
 import axios from 'axios';
-import Form from '../componentes/Form'
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import HeaderEnd from '../componentes/HeaderEnd';
 
 
 function Activities(){
@@ -22,8 +20,8 @@ const [errors,setErrors] = useState({})
 const [input,setInput]= useState({
     
     name:"",
-    dificulty: 1,
-    duration: 1,
+    dificulty: 0,
+    duration: 0,
     season:"",
 })
 
@@ -31,32 +29,48 @@ useEffect(()=>{
     dispatch(getCountries())
 },[])
 
-function validate(input){
+function validateName(input){
     let errors={};
     if(!input.name){
         errors.name = 'Se requiere un nombre de actividad'
     }
-    return errors
+    return errors 
+    
+}
+function validateDificulty(input){
+    let errors={};
+    if(isNaN(input.dificulty)){
+        errors.dificulty = 'SE REQUIERE SOLO UN NUMERO'
+    }
+    return errors 
+    
 }
 
 function  handleChange(e){
+    const value = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
+
 setInput({
     ...input,
-    [e.target.name] : e.target.value
+    [e.target.name] : value
 })
-setErrors(validate({
+setErrors(validateName({
     ...input,
     [e.target.name] : e.target.value
 }))
+
 } 
 
-function handleCheck(e){
-    if(e.target.checked){
+
+
+
+
+function handleSelectSeason(e){
+    
         setInput({
             ...input,
             season:e.target.value
         })
-    }
+    
 }
  function  handleSelectDuration(e){
      setInput({
@@ -64,71 +78,69 @@ function handleCheck(e){
          duration: e.target.value,
    })
  }
- function  handleSelectDificulty(e){
+ function  handleDificulty(e){
+     
      e.preventDefault()
     setInput({
         ...input,
         dificulty: e.target.value,
   })
+  setErrors(validateDificulty({
+    ...input,
+    [e.target.dificulty] : e.target.value
+}))
 }
 
 
 function  handleSelectCountry(e){
     e.preventDefault()
-    setIdcountry([...idcountry, e.target.value])
+    if(idcountry.includes(e.target.value)){
+        setIdcountry([...idcountry.filter(elem => elem !== e.target.value)])
+      }else{
+        setIdcountry([...idcountry, e.target.value])
+      }
+    
 }
-console.log(idcountry)
-
-
 
 const handleSubmit= async (e)=> {
     e.preventDefault()
     let idActivity = 0
+    if(!input.name || !input.dificulty || input.dificulty < 1 || input.dificulty > 5 || isNaN(input.dificulty)){
+        alert('Ingrese dato faltante para crear actividad o ingrese la dificultad adecuada')
+        history.push('/activities')
+
+    }else{
     const tourism = await  axios.post("http://localhost:3001/tourism",input)
     .then((activity)=>{
-        console.log("jooooooolaaaa",activity.data)
         idActivity = activity.data.id
+        console.log("ssssssss" , idActivity)
     })
     idcountry.forEach(act => {
-        console.log(act)
+        console.log("aca estoy", act)
     const activity2= axios.post(`http://localhost:3001/tourism/${idActivity}/countries/${act}`)
-    
-  })
+    })
   setInput({
    name:"",
-  dificulty: 1,
-  duration: 1,
+  dificulty: 0,
+  duration: 0,
   season:""})
   alert("Actividad creada")
-  history.push('/activities')
-
+  history.push('/home')
+  
  
 } 
-
-function handleDelete(el){
-    setIdcountry(
-        [idcountry.filter(cou=>cou !==el)]
-    )
 }
 
-function handleInputChange(e){
-    e.preventDefault()
-    setName(e.target.value)
-    
-    
-    }
-    function handleSubmitName(e){
-        e.preventDefault()    
-        dispatch(getCountrieName(e))
-        setCurrentCountries(getCountrieName(e))
-        console.log(name)
-    }
+function handleDelete(e){
 
+   setIdcountry([idcountry.filter(elem => elem !== e)]) 
+    console.log("aca estoy", idcountry)
+}
 
     return(
         <div className='App Fondoact'>
 <div>
-    <Nav/>
+    <Header/>
 </div>
 <div>
 <div className={s.form}>
@@ -147,15 +159,16 @@ function handleInputChange(e){
                         <p>{errors.name}</p>
                     )}
                     <div className={` ${s.floatform}`}>
-            <label className={`${s.moveh3} ${s.ltform}`}>Dificultad (1 - 5)</label>
-            <select className={s.formselect} onChange={(e)=>handleSelectDificulty(e)}>
-                        <option value="">Seleccione una opcion</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                    <label className={`${s.moveh3} ${s.ltform}`}>Dificultad (1-5)</label>
+            <input 
+                    type="text" 
+                    placeholder='Ingrese dificultad (1-5)'
+                    className={`${s.tamañoinput} ${s.borderinput} ${s.inputform}`}
+                   
+                    onChange={(e)=>handleDificulty(e)}/>   
+                    {errors.dificulty &&(
+                        <p>{errors.dificulty}</p>
+                    )}
                     </div>
 
             <label className={`${s.moveh3} ${s.ltform}`}>Duracion</label>
@@ -169,35 +182,17 @@ function handleInputChange(e){
                     </select>
              
             <label className={`${s.moveh3} ${s.ltform}`}>Season</label>
-            <div className={s.movecheck}>
-            <label ><input
-            type="checkbox"
-            name="summer"
-            value="summer"
-            onChange={(e)=>handleCheck(e)}/> Verano
-            </label>
-            <label><input
-            type="checkbox"
-            name="winter"
-            value="winter"
-            onChange={(e)=>handleCheck(e)}/> Winter
-            </label>
-            <label><input
-            type="checkbox"
-            name="spring"
-            value="spring"
-            onChange={(e)=>handleCheck(e)}/> Spring
-            </label>
-            <label><input
-            type="checkbox"
-            name="autumn"
-            value="autumn"
-            onChange={(e)=>handleCheck(e)}/> Autumn
-            </label>
-            </div>
+            <select className={s.formselect} onChange={(e)=>handleSelectSeason(e)}>
+                        <option value="">Seleccione una opcion</option>
+                        <option value="summer">Verano</option>
+                        <option value="winter">Invierno</option>
+                        <option value="autumn">Otoño</option>
+                        <option value="spring">Primavera</option>
+                    </select>
             <div >
             <label className={`${s.moveh3} ${s.ltform}`}>Paises</label>
             <select className={s.formselect} onChange={(e)=>handleSelectCountry(e)}>
+                <option>Seleccione un pais</option>
                 {countries.map((el)=>(
                     <option value= {el.id}>{el.name}</option>
                                 ))}
@@ -206,19 +201,16 @@ function handleInputChange(e){
             {idcountry.map(el =>
             <div className={s.movepaises} >
                 <p>{el}</p>
-                <button className={s.xbtn} >X</button>
-            </div>
+                <button className={s.xbtn} onClick={el=>handleDelete(el)}>X</button>
+                </div>
+                
             )}
+            
             </div>
+
                     <div>
                     <button type='submit'  
                     className={`${s.formbtn}`}>Crear</button>  
-                    </div>
-                    <div>
-                    <Link to='/home'>
-                    <button  
-                    className={`${s.formbtn}`}>Home</button>  
-                    </Link>
                     </div>
                     </div>
                       
@@ -228,7 +220,7 @@ function handleInputChange(e){
 </div>
 
 <div className={s.movenav2}>
-    <Nav2/>
+    <HeaderEnd/>
 </div>
 </div>
 

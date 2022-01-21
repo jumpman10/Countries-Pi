@@ -1,55 +1,32 @@
 import React from 'react';
-import s from '../styles/stylesComponentes.module.css';
+import { Link } from 'react-router-dom';
+import s from '../styles/stylesComponentes.module.css'
 
 
 
-function Header() {
-
-
-
+function  Header(){
+    
         return(
-            <header className={`${s.containerHeader} ${s.flexheader} ${s.moveheader} ${s.borderheader}`}>
-                
-                <div className={`${s.flexbtninput} ${s.line2}`}>
-                <form>
-                    <input 
-                    type="text" 
-                    placeholder='Ingrese pais' 
-                    
-                    className={`${s.tamañoinput} ${s.borderinput}`}/>
-                    <button type='submit'  
-                    
-                    className={s.btn}>Buscar</button>
-                </form>
-                <div>
-
-                </div>
-                </div>
-                
-                <div className={s.moveselect}>
-                    <h4>Continente</h4>
-                    <select className={s.select}>
-                        <option value="All">Seleccione una opcion</option>
-                        <option value="Europe">Europa</option>
-                        <option value="Asia">Asia</option>
-                        <option value="Oceania">Oceania</option>
-                        <option value="Africa">África</option>
-                        <option value="America">América </option>
-                    </select>
-                </div>
-              <div className={s.moveselect}>
-                    <h4>Orden</h4>
-                    <div>
-                
-                        <button >A-Z</button>
-                        <button >Z-A</button>
-                    </div>
-                </div>
-            </header>
+            
+            <div className={s.container}>
+              <ul className={`${s.uli} ${s.letranav}`}>
+              <li className={s.titulo}><a>Countries</a></li>
+              <li className={s.move}><a>by Juan Pablo</a></li>
+              <Link to={'/home'} >
+              <button className={`${s.btnmove} ${s.btnnav}`}>Countries</button>
+              </Link>
+              <Link to={'/activities'}>
+              <button className={`${s.btnmove2} ${s.btnnav}`}>Crear actividad</button>
+              </Link>
+              <Link to={'/list'}>
+              <button className={`${s.btnmove2} ${s.btnnav}`}>Lista de actividad</button>
+              </Link>
+              </ul>
+            </div>
+          
             
         )
     
 }
-
 
 export default Header;

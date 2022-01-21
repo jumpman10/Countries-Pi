@@ -1,15 +1,13 @@
 import React, { useEffect, useState} from 'react'
-import { getCountries,filterCountrybyRegion, orderByName,getCountrieName,filterCountrybySubregion,getActivities} from '../actions/countriesActions';
+import { getCountries,getActivities} from '../actions/countriesActions';
 import '../App.css';
 import Card from '../componentes/Card';
 import Header from '../componentes/Header';
-import Nav from '../componentes/NavBar';
 import s from '../styles/stylesApp.module.css';
 import ss from '../styles/stylesComponentes.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
-import Nav2 from '../componentes/NavBar2';
 import Paginado from '../componentes/Paginado';
+import HeaderEnd from '../componentes/HeaderEnd';
 
 
 
@@ -18,8 +16,6 @@ function Home() {
 
  const dispatch = useDispatch();
  const allCountries = useSelector((state) => state.countries);
- const [input, setInput] = useState("");
- const countrie =useSelector((state)=> state.country)
  const activities = useSelector((state)=>state.activities)
  
  
@@ -36,11 +32,12 @@ function Home() {
 },[dispatch,getCountries]);
 //setCurrentCountries(allCountries)
 
-const[currentCountries, setCurrentCountries] = useState('')
+ const[currentCountries, setCurrentCountries] = useState('')
+
  const[currentPage, setCurrentPage] = useState(1);
  const[countriesPerPage] = useState(10);
- const indexOfLastCountrie = currentPage * countriesPerPage; //10
- const indexOfFirstCountrie = indexOfLastCountrie - countriesPerPage; //0
+ const indexOfLastCountrie = currentPage * countriesPerPage; 
+ const indexOfFirstCountrie = indexOfLastCountrie - countriesPerPage; 
  
 const paginado = (pageNumbers) =>{
    setCurrentPage(pageNumbers) 
@@ -57,9 +54,8 @@ function handlerFilterRegion(e){
    
   //dispatch(filterCountrybyRegion(e.target.value))
   setCurrentCountries(filtroregion)
-  
-  
 }
+
 function handlerFilterSubregion(e){
   e.preventDefault(e)
   setCurrentPage(1)
@@ -73,7 +69,7 @@ function handlerFilterSubregion(e){
   
 }
 
-
+console.log(allCountries)
 
  function handlerSort(e){
   e.preventDefault(e);
@@ -102,47 +98,40 @@ function handlerFilterSubregion(e){
  }
 
  function handlerActivity(e){
-   console.log(e.target.value)
-   console.log(allCountries.filter(country=>country.tourisms.find(activity=>activity.id === 1)))
-const filtrado = allCountries.filter(country=>country.tourisms.find(activity=>activity.id === parseInt(e.target.value)))
-console.log(filtrado)
-setCurrentCountries(filtrado)
- }
+  e.preventDefault(e)
+  const filtrado = allCountries.filter(country=>country.tourisms.find(activity=>activity.id === parseInt(e.target.value)))
+  setCurrentCountries(filtrado)
+}
 
 function handleInputChange(e){
-    const datos = allCountries.filter(country=>country.name === e.target.value)    
-    setCurrentCountries(datos)
-  }
+    e.preventDefault(e)
+    const value = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
 
+    if(value===''){
+      dispatch(getCountries(allCountries))
+    }else{
+    const names= [...allCountries].filter(country=>country.name == value )  
+    setCurrentCountries(names)
+  }
+}
+
+
+function handleClick(e){ 
+    e.preventDefault();
+    dispatch(getCountries(allCountries))
+}
     
     return (
         <div className='App Fondoweb'  >
           <div>
-            <Nav/>
+            <Header/>
           </div>
           <div>
           <header className={`${ss.containerHeader} ${ss.flexheader} ${ss.moveheader} ${ss.borderheader}`}>
-                
-                <div className={`${ss.flexbtninput} ${ss.line2}`}>
-                <form  >
-                    <input 
-                    type="text" 
-                    placeholder='Ingrese pais' 
-                    onChange={(e)=> handleInputChange(e)} 
-                    className={`${ss.tamañoinput} ${ss.borderinput}`}/>
-                    <button
-                    
-                    className={ss.btn}>Buscar</button>
-                </form>
-                <div>
-
-                </div>
-                </div>
-                
                 <div className={ss.moveselect}>
                     <h4>Region</h4>
                     <select className={ss.select} onChange={e => handlerFilterRegion(e)} >
-                        <option value="All">Seleccione una opcion</option>
+                        <option >Seleccione una opcion</option>
                         <option value="Europe">Europe</option>
                         <option value="Asia">Asia</option>
                         <option value="Oceania">Oceania</option>
@@ -154,7 +143,7 @@ function handleInputChange(e){
                 <div className={ss.moveselect}>
                     <h4>Subregion</h4>
                     <select className={ss.select} onChange={e => handlerFilterSubregion(e)} >
-                        <option value="All">Seleccione una opcion</option>
+                        <option >Seleccione una opcion</option>
                         <optgroup label='Europe'>
                         <option value="Western Europe">Western Europe</option>
                         <option value="Central Europe">Central Europe</option>
@@ -210,16 +199,31 @@ function handleInputChange(e){
                       <option value="All">Seleccione una opcion</option>
                       { 
                          activities.map(activity=>(
-
                           <option value={activity.id}>{activity.name}</option> 
                         ))
-
                       }
-                      
                     </select>
                 </div>
             </header>
           </div>
+          <div className={`${ss.divbuscador}`}>
+                <form className={ss.movebuscador}>
+                  <div className={ss.textbuscador}>
+                  <hi className={ss.buscarpais}>Buscador</hi>
+                  </div>
+                  <div>
+                    <input 
+                    type="text" 
+                    placeholder='Ingrese pais' 
+                    onChange={(e)=> handleInputChange(e)} 
+                    className={`${ss.tamañoinput} ${ss.borderinput}`}/>
+                    </div>
+                </form>           
+                </div>
+                <div className={ss.btnresetmove}>
+                  <button onClick={e => handleClick(e)} className={ss.btnreset}>Todos</button>
+                </div>
+
             <div className={s.moveCard}>
               {
                 currentCountries? currentCountries.slice(indexOfFirstCountrie, indexOfLastCountrie).map(el=>{
@@ -248,7 +252,7 @@ function handleInputChange(e){
                </div>
                <div className={ss.movenav2}>
                
-                <Nav2/>
+                <HeaderEnd/>
                 </div>
         </div>
       );

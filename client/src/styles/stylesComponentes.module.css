@@ -50,8 +50,10 @@
     background-color: hsla(0, 0%, 100%, 0.562);
 }
 .tamañoinput{
-    width: 20rem;
-    background-color: hsla(0, 0%, 100%, 0.562);
+    width: 30rem;
+    background-color: rgba(0,0,0,0.6);
+    color:white;
+    
 }
 .flexheader{
     display: flex;
@@ -65,6 +67,10 @@
 .borderinput{
     border: none;
     border-bottom: 2px solid black;
+    border-left:2px solid black ;
+    border-right: 2px solid black;
+    padding-top: 5px;
+    padding-bottom: 3px;
 }
 .select{
     border: none;
@@ -85,7 +91,7 @@
     flex-direction:column;
 }
 .moveselect{
-    margin-left:40px;
+    margin-left:80px;
 }
 .moveselect2{
     padding-left:60px;
@@ -112,7 +118,21 @@
     margin-top: 100px;
 }
 
-
+.buscarpais{
+    font-size: 1rem;
+    background-color:  rgba(0,0,0,0.6);
+    border: none;
+    border-top: 2px solid black;
+    border-left:2px solid black ;
+    border-right: 2px solid black;
+    color:white
+}
+.textbuscador{
+    padding-right: 26.1rem;
+}
+.movebuscador{
+    margin-top: 20px;
+}
 
 /*--CARDS--*/
 
@@ -147,11 +167,23 @@
     background-color: black;
 }
 .tamañocarddetail{
-    width: 50rem;
+    width: 40rem;
+}
+.tamañocarddetailact{
+    width: 13rem;
 }
 
 .movecardetail{
     margin-top:3rem ;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.tableact{
+    border:black solid 2px;
+    width: 80%;
 }
 
 
@@ -189,7 +221,13 @@
     font-size: 20px;
     margin-top: 15px
 }
-
+.btnreset{
+    background-color: rgba(0,0,0,0.6);
+    color:white;
+}
+.btnresetmove{
+    padding-right: 70rem;
+}
 /*---PAGINATION---*/
 .paginacion{
     display: inline-block
@@ -202,6 +240,7 @@
     background-color: hsla(0, 0%, 100%, 0.562);
     border-radius: 10px;
 }
+
 /*---FORM---*/
 .form{
     width: 65rem;
