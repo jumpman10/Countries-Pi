@@ -1,0 +1,44 @@
+.position-info{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5rem;
+    margin-left:auto;
+    margin-right: auto;
+    justify-content: space-between ;  
+    width: 50rem;
+}  
+
+.card--ligth{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 23rem;
+    height: 26rem;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #cce0df;
+    box-shadow:  20px 20px 60px #adbebe,
+                 -20px -20px 60px #ebffff;
+  }
+
+.certificado{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 13rem;
+  }
+  .brand-certificado{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/344/diploma.png");
+    background-size:cover;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  }
+  .brand-certificado:hover {
+    background: url("https://img.icons8.com/ios/344/diploma.png");
+    background-size:cover;
+  }

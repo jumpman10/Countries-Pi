@@ -1,0 +1,137 @@
+.skills--ligth{
+    position: relative;
+    width: 60rem;
+    height: 28rem;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #cce0df;
+    box-shadow:  20px 20px 60px #adbebe,
+                 -20px -20px 60px #ebffff;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .line-skills{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+  }
+  .botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-sql{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/344/postgreesql.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-sql:hover {
+    background: url("https://img.icons8.com/ios/344/postgreesql.png");
+    background-size:cover;
+  }
+  .brand-js{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/344/javascript-logo.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-js:hover {
+    background: url("https://img.icons8.com/ios/344/javascript-logo.png");
+    background-size:cover;
+  }
+  .brand-react{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-glyphs/344/react.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-react:hover {
+    background: url("https://img.icons8.com/wired/344/react.png");
+    background-size:cover;
+  }
+  .brand-html{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-glyphs/344/html-5.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-html:hover {
+    background: url("https://img.icons8.com/ios/344/html-5--v2.png");
+    background-size:cover;
+  }
+  .brand-css{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/344/css3.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-css:hover {
+    background: url("https://img.icons8.com/ios/344/css3.png");
+    background-size:cover;
+  }
+  .brand-node{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/windows/344/nodejs.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-node:hover {
+    background: url("https://img.icons8.com/small/344/nodejs.png");
+    background-size:cover;
+  }
+  .brand-redux{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/344/redux.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-redux:hover {
+    background: url("https://img.icons8.com/ios/344/redux.png");
+    background-size:cover;
+  }
+  .brand-native{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/344/react-native.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-native:hover {
+    background: url("https://img.icons8.com/ios/344/react-native--v1.png");
+    background-size:cover;
+  }

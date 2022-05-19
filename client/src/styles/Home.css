@@ -1,0 +1,28 @@
+.position-about{
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;   
+  margin-left:auto;
+  margin-right: auto;
+}  
+.position-switch{
+  padding-bottom: 2rem;
+}
+.position-nav{
+margin-top: 2rem;
+margin-left: auto;
+margin-right: auto;
+
+}
+.position-footer{
+margin-top: 5rem;
+margin-bottom: 2rem;
+margin-left: auto;
+margin-right: auto;
+}
+.line-footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

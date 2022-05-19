@@ -1,0 +1,35 @@
+.about--ligth{
+    position: relative;
+    width: 40rem;
+    height: 35rem;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #cce0df;
+    box-shadow:  20px 20px 60px #adbebe,
+                 -20px -20px 60px #ebffff;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+.avatar{
+    margin-left: auto;
+    margin-right: auto;
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    box-shadow:  40px 40px 80px #adbebe,
+    -40px -40px 80px #ebffff;
+    box-sizing: border-box;
+    background: url("../archivos/perf-normal.png");
+    background-size: cover
+    
+    }
+
+    
+.text-about{
+    margin-bottom: auto;
+    margin-top: auto;
+    }
+    
+    

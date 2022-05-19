@@ -1,0 +1,81 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    height: 7rem;
+    position: relative;
+    width: 80rem;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background: #cce0df;
+    box-shadow:  20px 20px 60px #adbebe,
+                 -20px -20px 60px #ebffff;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .brand-logo-linkedin {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/452/linkedin-circled--v1.png");
+    background-size:cover;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  }
+  .brand-logo-linkedin:hover {
+    background: url("https://img.icons8.com/ios/452/linkedin-circled--v1.png");
+    background-size:cover;
+  }
+  .brand-logo-github {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/fluency-systems-filled/344/github.png");
+    background-size:cover;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  }
+  .brand-logo-github:hover {
+    background: url("https://img.icons8.com/fluency-systems-regular/344/github.png");
+    background-size:cover;
+  }
+  .brand-logo-gmail {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/344/email-sign.png");
+    background-size:cover;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  }
+  .brand-logo-gmail:hover {
+    background: url("https://img.icons8.com/ios/344/email-sign.png");
+    background-size:cover;
+  }  
+  .brand-cv{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/fluency-systems-filled/344/user.png");
+    background-size:cover;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  }
+  .brand-cv:hover {
+    background: url("https://img.icons8.com/fluency-systems-regular/344/user.png");
+    background-size:cover;
+  }
+  .contacto{
+    display: flex;
+    flex-direction: row;
+    width: 31.25rem;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+.botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

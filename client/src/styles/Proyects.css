@@ -1,0 +1,71 @@
+.proyectos--ligth{
+    position: relative;
+    width: 60rem;
+    height: 45rem;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #cce0df;
+    box-shadow:  20px 20px 60px #adbebe,
+                 -20px -20px 60px #ebffff;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .line-proyectos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+  }
+  
+  .proyects{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3rem;
+  }
+  .card2--ligth{
+    position: relative;
+    width: 20rem;
+    height: 32rem;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #cce0df;
+    box-shadow:  20px 20px 60px #adbebe,
+                 -20px -20px 60px #ebffff;
+  }
+
+  .brand-repositorio{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/fluency-systems-filled/344/github.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-repositorio:hover {
+    background: url("https://img.icons8.com/fluency-systems-regular/344/github.png");
+    background-size:cover;
+  }
+  .brand-app{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: url("https://img.icons8.com/ios-filled/344/pets--v1.png");
+    background-size:cover;
+    box-shadow:  20px 20px 40px #adbebe,
+    -20px -20px 40px #ebffff;
+  }
+  .brand-app:hover {
+    background: url("https://img.icons8.com/ios/344/pets--v1.png");
+    background-size:cover;
+  }
+  .botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

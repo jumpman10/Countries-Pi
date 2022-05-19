@@ -5,9 +5,92 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  background: #cce0df;;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: scroll; 
 }
+
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button{
+  cursor: pointer;
+}
+
+input{
+  text-align: left;
+  background-color: #ffffff00;
+  width: 19rem;
+  border:none;
+  text-align:center;
+  background: #cce0df;
+  padding: 3px;
+  border-radius: 50px;
+  box-shadow:  inset 6px 6px 6px #adbebe, inset
+  -6px -6px 6px #ebffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+input:hover{
+  background: black;
+  color: white;
+  box-shadow: none
+}
+input:focus{ 
+  border:none;	
+  outline:none;	
+ }
+h1 {
+text-align:center;
+background: #cce0df;
+padding: 3px;
+border-radius: 50px;
+box-shadow:  inset 6px 6px 6px #adbebe, inset
+-6px -6px 6px #ebffff;
+}
+h2 {
+  text-align:center;
+  background: #cce0df;
+padding: 3px;
+border-radius: 50px;
+box-shadow:  inset 6px 6px 6px #adbebe, inset
+-6px -6px 6px #ebffff;
+  }
+  h2:hover{
+    background: black;
+    color: white;
+    box-shadow: none
+  }
+h3 {
+  text-align:center;
+  }
+h4{
+    text-align:left;
+    }
+h5{
+    text-align:left;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+      }
